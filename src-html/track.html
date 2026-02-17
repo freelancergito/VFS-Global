@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Application - VFS Global</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">V</div>
+                    <span>VFS Global</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="index.html">Home</a>
+                    <a href="centers.html">Visa Centers</a>
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <a href="register.html" class="btn btn-primary">Register</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <div class="container">
+                <h1>Track Your Application</h1>
+                <p>Check the status of your visa application</p>
+            </div>
+        </div>
+        
+        <div class="tracking-container">
+            <div id="trackingError" class="error-message" style="display: none;"></div>
+            
+            <div class="tracking-form">
+                <input type="text" id="trackingInput" class="input-field" placeholder="Enter Application Reference Number">
+                <button id="trackBtn" class="btn btn-primary">
+                    <i class="fas fa-search"></i> Track
+                </button>
+            </div>
+            
+            <div id="trackingResult" style="display: none;"></div>
+        </div>
+        
+        <div style="text-align: center; margin-bottom: 60px;">
+            <p>Need help? <a href="centers.html" style="color: var(--secondary);">Find a Visa Center</a></p>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

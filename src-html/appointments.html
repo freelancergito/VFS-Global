@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment - VFS Global</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">V</div>
+                    <span>VFS Global</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="index.html">Home</a>
+                    <a href="dashboard.html">Dashboard</a>
+                    <button onclick="logout()" class="btn btn-outline">Logout</button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="form-section">
+        <div class="form-container-wide">
+            <h1 style="text-align: center; color: var(--primary); margin-bottom: 30px;">Book Appointment</h1>
+            
+            <div class="booking-steps">
+                <div class="booking-step active" data-step="1">
+                    <div class="booking-step-number">1</div>
+                    <span class="booking-step-label">Application</span>
+                </div>
+                <div class="booking-step" data-step="2">
+                    <div class="booking-step-number">2</div>
+                    <span class="booking-step-label">Center & Date</span>
+                </div>
+                <div class="booking-step" data-step="3">
+                    <div class="booking-step-number">3</div>
+                    <span class="booking-step-label">Time & Confirm</span>
+                </div>
+            </div>
+            
+            <!-- Step 1: Select Application -->
+            <div class="booking-content" style="display: block;">
+                <h2>Select Application</h2>
+                <div class="application-list" id="applicationOptions"></div>
+                <button id="step1Next" class="btn btn-primary" style="width: 100%;">Continue</button>
+            </div>
+            
+            <!-- Step 2: Select Center & Date -->
+            <div class="booking-content" style="display: none;">
+                <h2>Select Visa Application Center</h2>
+                <div class="centers-grid" id="centerOptions"></div>
+                
+                <h2 style="margin-top: 30px;">Select Date</h2>
+                <div class="dates-grid" id="dateOptions"></div>
+                
+                <div style="display: flex; gap: 15px;">
+                    <button onclick="goToStep(1)" class="btn btn-secondary" style="flex: 1;">Back</button>
+                    <button id="step2Next" class="btn btn-primary" style="flex: 1;">Continue</button>
+                </div>
+            </div>
+            
+            <!-- Step 3: Select Time -->
+            <div class="booking-content" style="display: none;">
+                <h2>Select Time Slot</h2>
+                <div class="times-grid" id="timeOptions"></div>
+                
+                <div class="booking-summary">
+                    <h3>Appointment Summary</h3>
+                    <p><strong>Date:</strong> <span id="summaryDate">-</span></p>
+                    <p><strong>Time:</strong> <span id="summaryTime">-</span></p>
+                    <p><strong>Center:</strong> <span id="summaryCenter">-</span></p>
+                </div>
+                
+                <div style="display: flex; gap: 15px;">
+                    <button onclick="goToStep(2)" class="btn btn-secondary" style="flex: 1;">Back</button>
+                    <button id="step3Next" class="btn btn-accent" style="flex: 1;">Confirm Appointment</button>
+                </div>
+            </div>
+            
+            <!-- Step 4: Success -->
+            <div class="booking-content" style="display: none;">
+                <div class="success-container">
+                    <div class="success-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h2>Appointment Booked Successfully!</h2>
+                    <p>A confirmation email has been sent to your registered email address.</p>
+                    
+                    <div class="success-details">
+                        <p><strong>Date:</strong> <span id="finalDate">-</span></p>
+                        <p><strong>Time:</strong> <span id="finalTime">-</span></p>
+                        <p><strong>Center:</strong> <span id="finalCenter">-</span></p>
+                    </div>
+                    
+                    <div style="display: flex; gap: 15px; justify-content: center;">
+                        <a href="dashboard.html" class="btn btn-primary">Go to Dashboard</a>
+                        <button onclick="location.reload()" class="btn btn-secondary">Book Another</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+    <script>
+        function goToStep(step) {
+            document.querySelectorAll('.booking-step').forEach((s, index) => {
+                s.classList.remove('active', 'completed');
+                if (index + 1 < step) s.classList.add('completed');
+                if (index + 1 === step) s.classList.add('active');
+            });
+            
+            document.querySelectorAll('.booking-content').forEach((c, index) => {
+                c.style.display = index + 1 === step ? 'block' : 'none';
+            });
+            
+            if (step === 4) {
+                document.getElementById('finalDate').textContent = document.querySelector('.date-option.selected')?.dataset.date;
+                document.getElementById('finalTime').textContent = document.querySelector('.time-option.selected')?.dataset.time;
+                document.getElementById('finalCenter').textContent = document.getElementById('summaryCenter').textContent;
+            }
+        }
+    </script>
+</body>
+</html>

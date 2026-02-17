@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - VFS Global</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-header">
+        <div class="container">
+            <h1>VFS Global - Admin Panel</h1>
+            <div class="user-info">
+                <span>Welcome, <span id="adminName">Admin</span></span>
+                <a href="dashboard.html" class="btn" style="background: rgba(255,255,255,0.2); color: white;">Dashboard</a>
+            </div>
+        </div>
+    </div>
+
+    <main class="admin-main">
+        <div class="container">
+            <div class="admin-tabs">
+                <button class="admin-tab active" id="tabApplications">Applications</button>
+                <button class="admin-tab" id="tabUsers">Users</button>
+            </div>
+            
+            <div class="admin-content">
+                <div class="admin-toolbar">
+                    <div class="search-box-admin">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="adminSearch" class="input-field" placeholder="Search...">
+                    </div>
+                    <button id="exportBtn" class="btn btn-secondary">
+                        <i class="fas fa-download"></i> Export CSV
+                    </button>
+                </div>
+                
+                <table class="data-table" id="applicationsTable">
+                    <thead>
+                        <tr>
+                            <th>Reference</th>
+                            <th>Applicant</th>
+                            <th>Visa Type</th>
+                            <th>Route</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="applicationsBody"></tbody>
+                </table>
+                
+                <table class="data-table" id="usersTable" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Joined</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+    <script>
+        // Create admin user for demo
+        const users = JSON.parse(localStorage.getItem('vfs_users') || '[]');
+        if (!users.find(u => u.role === 'admin')) {
+            users.push({
+                id: 'admin_1',
+                firstName: 'Admin',
+                lastName: 'User',
+                email: 'admin@vfsglobal.com',
+                password: 'admin123',
+                phone: '+1-800-000-0000',
+                role: 'admin',
+                createdAt: new Date().toISOString()
+            });
+            localStorage.setItem('vfs_users', JSON.stringify(users));
+        }
+        
+        // Auto-login as admin
+        localStorage.setItem('vfs_user', JSON.stringify(users.find(u => u.role === 'admin')));
+        localStorage.setItem('vfs_token', 'admin-token');
+    </script>
+</body>
+</html>

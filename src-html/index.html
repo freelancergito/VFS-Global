@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VFS Global - Visa Application Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">V</div>
+                    <span>VFS Global</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="index.html">Home</a>
+                    <a href="track.html">Track Application</a>
+                    <a href="centers.html">Visa Centers</a>
+                    <div class="auth-buttons" id="authButtons">
+                        <a href="login.html" class="btn btn-outline">Login</a>
+                        <a href="register.html" class="btn btn-primary">Register</a>
+                    </div>
+                    <div class="user-menu" id="userMenu" style="display: none;">
+                        <span id="userName"></span>
+                        <a href="dashboard.html" class="btn btn-outline">Dashboard</a>
+                        <button onclick="logout()" class="btn btn-outline">Logout</button>
+                    </div>
+                </nav>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div id="announcementBanner" class="announcement-banner" style="display: none;">
+        <div class="container">
+            <p id="announcementText"></p>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Apply for Your Visa Online</h1>
+                <p class="subtitle">Simple, secure, and convenient visa application services</p>
+                
+                <div class="search-box">
+                    <div class="search-row">
+                        <div class="search-field">
+                            <label>Select Country You Are Applying From</label>
+                            <select id="fromCountry">
+                                <option value="">Select Country</option>
+                            </select>
+                        </div>
+                        <div class="search-field">
+                            <label>Select Destination Country</label>
+                            <select id="toCountry">
+                                <option value="">Select Country</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button onclick="startApplication()" class="btn btn-accent btn-large">
+                        Start Application
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Links Section -->
+        <section class="quick-links">
+            <div class="container">
+                <div class="cards-grid">
+                    <a href="track.html" class="card">
+                        <div class="card-icon blue">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Track Application</h3>
+                        <p>Check the status of your visa application using your reference number</p>
+                    </a>
+                    <a href="appointments.html" class="card">
+                        <div class="card-icon green">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <h3>Book Appointment</h3>
+                        <p>Schedule an appointment at your nearest visa application center</p>
+                    </a>
+                    <a href="apply.html" class="card">
+                        <div class="card-icon orange">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3>New Application</h3>
+                        <p>Start a new visa application for your travel needs</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services">
+            <div class="container">
+                <h2>Our Services</h2>
+                <div class="services-grid" id="servicesGrid">
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section class="why-us">
+            <div class="container">
+                <h2>Why Choose VFS Global?</h2>
+                <div class="features-grid">
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Secure & Reliable</h3>
+                        <p>Industry-leading security measures to protect your personal data</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3>Global Network</h3>
+                        <p>Over 3,000 visa application centers in 140+ countries</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Easy Scheduling</h3>
+                        <p>Book appointments online at your convenience</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>VFS Global</h3>
+                    <p>Your trusted partner for visa application services. We provide efficient and reliable visa processing solutions.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="track.html">Track Application</a></li>
+                        <li><a href="centers.html">Visa Centers</a></li>
+                        <li><a href="apply.html">Apply Now</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="apply.html">Tourist Visa</a></li>
+                        <li><a href="apply.html">Business Visa</a></li>
+                        <li><a href="apply.html">Student Visa</a></li>
+                        <li><a href="apply.html">Work Visa</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +1-800-VFS-GLOBAL</li>
+                        <li><i class="fas fa-envelope"></i> info@vfsglobalservices.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Global HQ, Switzerland</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 VFS Global Services. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

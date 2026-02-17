@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - VFS Global</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">V</div>
+                    <span>VFS Global</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="index.html">Home</a>
+                    <a href="track.html">Track Application</a>
+                    <a href="centers.html">Visa Centers</a>
+                    <div class="auth-buttons" id="authButtons" style="display: none;">
+                        <a href="login.html" class="btn btn-outline">Login</a>
+                        <a href="register.html" class="btn btn-primary">Register</a>
+                    </div>
+                    <div class="user-menu" id="userMenu">
+                        <span id="userName"></span>
+                        <a href="dashboard.html" class="btn btn-outline">Dashboard</a>
+                        <button onclick="logout()" class="btn btn-outline">Logout</button>
+                    </div>
+                </nav>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>Welcome, <span id="welcomeName">User</span></h1>
+                <p>Manage your visa applications and appointments</p>
+            </div>
+            
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <a href="apply.html" class="stat-icon primary">
+                        <i class="fas fa-plus"></i>
+                    </a>
+                    <div class="stat-info">
+                        <h3>New Application</h3>
+                        <p>Start a new visa application</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <a href="appointments.html" class="stat-icon green">
+                        <i class="fas fa-calendar"></i>
+                    </a>
+                    <div class="stat-info">
+                        <h3>Book Appointment</h3>
+                        <p>Schedule your visit</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalApps">0</h3>
+                        <p>Total Applications</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="upcomingAppts">0</h3>
+                        <p>Upcoming Appointments</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h2>My Applications <a href="apply.html">View All</a></h2>
+                    <div id="applicationsList"></div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <h2>My Appointments <a href="appointments.html">View All</a></h2>
+                    <div id="appointmentsList"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+    <script>
+        document.getElementById('welcomeName').textContent = getCurrentUser()?.firstName || 'User';
+    </script>
+</body>
+</html>
